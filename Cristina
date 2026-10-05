@@ -1,0 +1,629 @@
+TRABALHO AVALIATIVO
+
+Animações e Transições com CSS e JavaScript
+Disciplina: Desenvolvimento Web
+Professor: Donald                                                                               Aluno(a): Cristina
+Turma: 3º DS                                                                                    Data: 05/10/2026
+________________________________________
+1. PESQUISA
+1. O que são animações em páginas web?
+As animações em páginas web são efeitos visuais que fazem os elementos da página se movimentarem ou mudarem de aparência.
+Elas podem ser usadas para deixar o site mais bonito, moderno e interativo. Por exemplo, um botão pode mudar de cor quando passamos o mouse, uma imagem pode aumentar quando clicamos nela ou um elemento pode aparecer deslizando na tela.
+Exemplo:
+Quando passamos o mouse sobre um botão e ele aumenta de tamanho suavemente, estamos usando uma animação ou transição.
+________________________________________
+2. O que é uma transição CSS?
+Uma transição CSS serve para fazer uma mudança de estilo acontecer de forma suave, em vez de acontecer de uma vez.
+A propriedade transition define quanto tempo e como essa mudança deve acontecer.
+Exemplo:
+.botao {
+    background-color: blue;
+    transition: 0.5s;
+}
+
+.botao:hover {
+    background-color: green;
+}
+Nesse exemplo, quando o mouse passa sobre o botão, a cor muda de azul para verde suavemente durante 0,5 segundo.
+A propriedade:
+transition: 0.5s;
+faz com que a mudança não seja instantânea.
+________________________________________
+3. O que é transform?
+A propriedade transform permite modificar visualmente um elemento, como aumentar, girar, mover ou inclinar.
+As principais funções são:
+scale()
+Serve para aumentar ou diminuir o tamanho de um elemento.
+.caixa:hover {
+    transform: scale(1.2);
+}
+Nesse caso, a caixa fica 20% maior.
+________________________________________
+rotate()
+Serve para girar um elemento.
+.caixa:hover {
+    transform: rotate(45deg);
+}
+A caixa irá girar 45 graus.
+________________________________________
+translate()
+Serve para mover um elemento.
+.caixa:hover {
+    transform: translateX(50px);
+}
+O elemento será movimentado 50 pixels para a direita.
+Também podemos usar:
+transform: translateY(30px);
+para mover o elemento para baixo.
+________________________________________
+skew()
+Serve para inclinar ou deformar um elemento.
+.caixa:hover {
+    transform: skew(10deg);
+}
+A caixa ficará inclinada.
+Dois exemplos de utilização:
+.exemplo1:hover {
+    transform: scale(1.2);
+}
+Aumenta o elemento.
+.exemplo2:hover {
+    transform: rotate(180deg);
+}
+Gira o elemento.
+________________________________________
+4. O que são @keyframes?
+@keyframes é utilizado no CSS para criar uma animação definindo o que acontece com um elemento durante diferentes momentos da animação.
+Por exemplo:
+@keyframes mover {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200px);
+    }
+}
+Depois podemos aplicar essa animação:
+.caixa {
+    animation: mover 2s;
+}
+Nesse exemplo, a caixa começa em uma posição e vai até outra durante 2 segundos.
+Podemos pensar no @keyframes como se fossem etapas da animação.
+________________________________________
+5. Diferença entre transition e animation
+Transition	Animation
+Normalmente acontece quando existe uma mudança de estado	Pode acontecer automaticamente
+É muito utilizada com :hover	Utiliza @keyframes
+Geralmente trabalha entre dois estados	Pode possuir várias etapas
+É mais simples	Permite animações mais complexas
+Exemplo: botão mudar de cor	Exemplo: objeto se movimentar continuamente
+Exemplo de transition:
+button {
+    transition: 0.5s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+A mudança acontece quando o usuário passa o mouse.
+Exemplo de animation:
+@keyframes mover {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200px);
+    }
+}
+
+.caixa {
+    animation: mover 2s infinite;
+}
+Nesse caso, a animação pode acontecer automaticamente e se repetir.
+________________________________________
+6. Qual é a função do JavaScript nas animações?
+O JavaScript pode controlar animações e efeitos de acordo com as ações do usuário.
+Por exemplo, podemos fazer uma animação acontecer quando o usuário:
+•	clica em um botão;
+•	passa o mouse;
+•	tira o mouse;
+•	pressiona uma tecla;
+•	abre um menu;
+•	fecha uma janela.
+O JavaScript pode adicionar ou remover classes CSS usando:
+elemento.classList.add("animar");
+ou:
+elemento.classList.remove("animar");
+Também podemos usar:
+elemento.classList.toggle("animar");
+O toggle() adiciona a classe se ela não existir e remove se ela já existir.
+Exemplo:
+const caixa = document.querySelector(".caixa");
+const botao = document.querySelector("#botao");
+
+botao.addEventListener("click", function() {
+    caixa.classList.toggle("animar");
+});
+Nesse caso, o JavaScript percebe o clique e adiciona ou remove a classe animar.
+________________________________________
+7. Eventos JavaScript
+Eventos são ações que acontecem na página e que podem ser detectadas pelo JavaScript.
+click
+Acontece quando o usuário clica em um elemento.
+Exemplo:
+botao.addEventListener("click", function() {
+    alert("Você clicou no botão!");
+});
+________________________________________
+mouseover
+Acontece quando o mouse entra ou passa sobre um elemento.
+Exemplo:
+caixa.addEventListener("mouseover", function() {
+    console.log("Mouse sobre a caixa");
+});
+________________________________________
+mouseout
+Acontece quando o mouse sai de cima de um elemento.
+Exemplo:
+caixa.addEventListener("mouseout", function() {
+    console.log("Mouse saiu da caixa");
+});
+Esses eventos podem ser utilizados para criar páginas mais interativas.
+________________________________________
+8. Site que utiliza animações
+Um exemplo de site que utiliza bastante animação é o Apple.
+No site da Apple, podemos encontrar diversos efeitos visuais.
+1. Animações de entrada
+Alguns textos e imagens aparecem suavemente quando o usuário navega pela página.
+2. Transições
+Botões e links podem mudar de aparência quando o usuário passa o mouse sobre eles.
+3. Movimento de imagens
+Alguns elementos visuais podem se movimentar conforme o usuário rola a página.
+Esses recursos ajudam a deixar a página mais moderna e também chamam a atenção do usuário para informações importantes.
+________________________________________
+2. PROJETO PRÁTICO
+Para o projeto, podemos criar uma página chamada:
+✨ Laboratório de Animações
+Ela terá quatro animações diferentes:
+1.	🎨 Mudar a cor da caixa.
+2.	🔄 Girar a caixa.
+3.	🔍 Aumentar a caixa.
+4.	➡️ Movimentar a caixa.
+Além disso, vamos usar JavaScript para controlar as animações através de cliques.
+________________________________________
+Estrutura dos arquivos
+Crie uma pasta chamada:
+projeto-animacoes
+Dentro dela:
+projeto-animacoes/
+│
+├── index.html
+├── style.css
+└── script.js
+________________________________________
+1. index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratório de Animações</title>
+
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Laboratório de Animações</h1>
+
+        <p>
+            Clique nos botões para testar diferentes animações
+            utilizando CSS e JavaScript.
+        </p>
+
+        <!-- Elemento que será animado -->
+        <div id="caixa" class="caixa">
+            GH
+        </div>
+
+        <!-- Botões -->
+        <div class="botoes">
+
+            <button id="cor">
+                Mudar cor
+            </button>
+
+            <button id="girar">
+                Girar
+            </button>
+
+            <button id="aumentar">
+                Aumentar
+            </button>
+
+            <button id="mover">
+                Mover
+            </button>
+
+            <button id="resetar">
+                Resetar
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Arquivo JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+________________________________________
+2. style.css
+/* Remove margens padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração da página */
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #111;
+
+    color: white;
+}
+
+/* Área principal */
+.container {
+    width: 90%;
+    max-width: 800px;
+
+    text-align: center;
+
+    padding: 40px;
+
+    background: #1c1c1c;
+
+    border-radius: 20px;
+}
+
+/* Título */
+h1 {
+    margin-bottom: 15px;
+
+    color: #d4af37;
+}
+
+/* Texto */
+p {
+    margin-bottom: 40px;
+
+    color: #ccc;
+}
+
+/* Caixa que será animada */
+.caixa {
+    width: 150px;
+    height: 150px;
+
+    margin: 0 auto 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #d4af37;
+
+    color: #111;
+
+    font-size: 35px;
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    /* Faz as mudanças acontecerem suavemente */
+    transition: 0.7s;
+}
+
+/* ------------------------- */
+/* ANIMAÇÃO DE MUDAR A COR */
+/* ------------------------- */
+
+.caixa.mudar-cor {
+    background: #8e44ad;
+
+    color: white;
+}
+
+/* ------------------------- */
+/* ANIMAÇÃO DE GIRAR */
+/* ------------------------- */
+
+.caixa.girar {
+    transform: rotate(360deg);
+}
+
+/* ------------------------- */
+/* ANIMAÇÃO DE AUMENTAR */
+/* ------------------------- */
+
+.caixa.aumentar {
+    transform: scale(1.4);
+}
+
+/* ------------------------- */
+/* ANIMAÇÃO DE MOVIMENTO */
+/* ------------------------- */
+
+.caixa.mover {
+    transform: translateX(200px);
+}
+
+/* Botões */
+
+.botoes {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #d4af37;
+
+    color: #111;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* Efeito quando passa o mouse */
+
+button:hover {
+    transform: scale(1.05);
+
+    background: #f0cf58;
+}
+
+/* Quando o botão é pressionado */
+
+button:active {
+    transform: scale(0.95);
+}
+________________________________________
+3. script.js
+// Seleciona a caixa pelo ID
+const caixa = document.getElementById("caixa");
+
+// Seleciona os botões
+const botaoCor = document.getElementById("cor");
+
+const botaoGirar = document.getElementById("girar");
+
+const botaoAumentar = document.getElementById("aumentar");
+
+const botaoMover = document.getElementById("mover");
+
+const botaoResetar = document.getElementById("resetar");
+
+
+// Botão para mudar a cor
+botaoCor.addEventListener("click", function() {
+
+    caixa.classList.toggle("mudar-cor");
+
+});
+
+
+// Botão para girar
+botaoGirar.addEventListener("click", function() {
+
+    caixa.classList.toggle("girar");
+
+});
+
+
+// Botão para aumentar
+botaoAumentar.addEventListener("click", function() {
+
+    caixa.classList.toggle("aumentar");
+
+});
+
+
+// Botão para mover
+botaoMover.addEventListener("click", function() {
+
+    caixa.classList.toggle("mover");
+
+});
+
+
+// Botão para resetar todas as animações
+botaoResetar.addEventListener("click", function() {
+
+    caixa.classList.remove("mudar-cor");
+
+    caixa.classList.remove("girar");
+
+    caixa.classList.remove("aumentar");
+
+    caixa.classList.remove("mover");
+
+});
+________________________________________
+Como o projeto funciona
+O projeto utiliza os três principais recursos pedidos na atividade:
+HTML
+É responsável pela estrutura da página.
+Por exemplo:
+<button id="girar">Girar</button>
+Cria o botão que o usuário pode clicar.
+________________________________________
+CSS
+É responsável pela aparência e pelas animações.
+Por exemplo:
+.caixa.girar {
+    transform: rotate(360deg);
+}
+Aqui o CSS determina que a caixa deverá girar.
+E:
+transition: 0.7s;
+faz com que a transformação aconteça suavemente.
+________________________________________
+JavaScript
+É responsável pela interação.
+Por exemplo:
+botaoGirar.addEventListener("click", function() {
+    caixa.classList.toggle("girar");
+});
+O JavaScript está dizendo:
+"Quando o botão Girar for clicado, coloque ou retire a classe girar da caixa."
+A classe girar está definida no CSS.
+________________________________________
+3. APRESENTAÇÃO
+Na apresentação, você pode explicar assim:
+Introdução
+"Meu trabalho é sobre animações e transições utilizando CSS e JavaScript. Eu pesquisei como esses recursos funcionam e desenvolvi uma página prática onde o usuário pode interagir com uma caixa através de botões."
+________________________________________
+Explicando o CSS
+Você pode falar:
+"No CSS eu defini a aparência da página e também as transformações da caixa. Usei transition para deixar as mudanças mais suaves e transform para fazer a caixa girar, aumentar e se movimentar."
+________________________________________
+Explicando o JavaScript
+Você pode falar:
+"No JavaScript eu coloquei eventos de clique nos botões. Quando o usuário clica em um botão, o JavaScript adiciona ou remove uma classe CSS utilizando classList.toggle()."
+________________________________________
+Perguntas que o professor pode fazer
+1. Qual é a diferença entre transition e animation?
+Resposta:
+Transition normalmente faz uma mudança suave entre dois estados, enquanto animation permite criar uma sequência de movimentos usando @keyframes.
+________________________________________
+2. Para que serve transform?
+Resposta:
+Serve para modificar visualmente um elemento, podendo aumentar, girar, mover ou inclinar.
+________________________________________
+3. O que faz scale()?
+Resposta:
+O scale() aumenta ou diminui o tamanho de um elemento.
+Exemplo:
+transform: scale(1.5);
+Aumenta o elemento em 50%.
+________________________________________
+4. O que faz rotate()?
+Resposta:
+O rotate() gira um elemento.
+Exemplo:
+transform: rotate(360deg);
+Gira o elemento uma volta completa.
+________________________________________
+5. O que faz translate()?
+Resposta:
+O translate() movimenta um elemento na horizontal ou vertical.
+Exemplo:
+transform: translateX(200px);
+Move o elemento 200 pixels para a direita.
+________________________________________
+6. Para que serve @keyframes?
+Resposta:
+Serve para criar uma animação definindo os diferentes estados que o elemento terá durante a animação.
+________________________________________
+7. Qual é a função do JavaScript?
+Resposta:
+O JavaScript adiciona interação à página. No meu projeto ele detecta o clique do usuário e adiciona ou remove classes CSS para controlar as animações.
+________________________________________
+8. O que é uma classe CSS?
+Resposta:
+É uma forma de identificar um ou vários elementos para aplicar estilos a eles.
+Exemplo:
+.caixa {
+    background: gold;
+}
+________________________________________
+9. O que faz classList.add()?
+Resposta:
+Adiciona uma classe CSS a um elemento.
+Exemplo:
+caixa.classList.add("girar");
+________________________________________
+10. O que faz classList.toggle()?
+Resposta:
+Ele adiciona a classe se ela não estiver presente e remove se ela já estiver presente.
+No meu projeto eu usei para ativar e desativar as animações.
+________________________________________
+11. Qual evento JavaScript você utilizou?
+Resposta:
+Eu utilizei o evento click, que acontece quando o usuário clica em um botão.
+________________________________________
+12. O que acontece se removermos o JavaScript?
+Resposta:
+A página e o CSS continuam aparecendo, mas os botões não conseguem controlar as animações porque o JavaScript é responsável por adicionar e remover as classes.
+________________________________________
+13. O que acontece se removermos o CSS?
+Resposta:
+A estrutura HTML continua existindo e o JavaScript ainda pode funcionar, mas os estilos e as animações não serão aplicados.
+________________________________________
+14. Onde isso poderia ser utilizado em um site real?
+Resposta:
+Pode ser utilizado em menus, botões, páginas de login, galerias de imagens, cards de produtos, notificações, carregamentos e vários outros elementos para deixar o site mais interativo.
+________________________________________
+DESAFIO EXTRA
+O projeto também possui um efeito acionado pelo usuário:
+Passar o mouse no botão
+No CSS:
+button:hover {
+    transform: scale(1.05);
+}
+Quando o usuário passa o mouse sobre o botão, ele aumenta um pouco.
+Também existe:
+button:active {
+    transform: scale(0.95);
+}
+Quando o botão é pressionado, ele diminui levemente.
+Isso pode ser apresentado como o bônus da atividade, pois é uma animação/transição acionada por uma ação do usuário.
+________________________________________
+Resumo para decorar antes da apresentação
+Se o professor perguntar "me explique seu projeto", você pode responder:
+"Eu fiz uma página usando HTML, CSS e JavaScript. O HTML cria os botões e a caixa que será animada. No CSS eu criei as classes das animações usando transform e usei transition para deixar os movimentos suaves. No JavaScript eu usei o evento click para identificar quando o usuário aperta os botões. Depois usei classList.toggle() para adicionar ou remover as classes CSS. Assim consigo mudar a cor, girar, aumentar e movimentar a caixa."
+O mais importante para você lembrar:
+HTML → estrutura
+CSS → aparência e animações
+JavaScript → interação e controle
+transition → mudança suave
+transform → modifica o elemento
+scale() → aumenta/diminui
+rotate() → gira
+translate() → movimenta
+@keyframes → cria etapas de uma animação
+click → detecta clique
+classList.toggle() → adiciona/remove uma classe
